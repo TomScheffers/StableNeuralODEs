@@ -17,7 +17,7 @@ def get_mnist(batch_size=64):
     )
     return train_loader, test_loader
 
-def get_cifar10(batch_size=64):
+def get_cifar10(batch_size=64, shuffle=True):
     transform_train = transforms.Compose([
         transforms.RandomCrop(32, padding = 4),
         transforms.RandomHorizontalFlip(),
@@ -32,7 +32,7 @@ def get_cifar10(batch_size=64):
 
     train_loader = DataLoader(
         datasets.CIFAR10(root='.data/cifar10', train=True, download=True, transform=transform_train), batch_size=batch_size,
-        shuffle=True, drop_last=True
+        shuffle=shuffle, drop_last=True
     )
 
     test_loader = DataLoader(
